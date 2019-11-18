@@ -18,6 +18,7 @@
     },
     "homepage": "https://github.com/Felipemv/inatel-trabalho-ec021#readme",
     "dependencies": {
+        "dotenv": "^8.2.0",
         "restify": "^8.4.0",
         "restify-router": "^0.5.1"
     },
