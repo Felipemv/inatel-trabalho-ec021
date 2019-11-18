@@ -1,0 +1,27 @@
+{
+    "name": "inatel-trabalho-ec021",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Felipemv/inatel-trabalho-ec021.git"
+    },
+    "author": "Felipe M., Rafael M.",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Felipemv/inatel-trabalho-ec021/issues"
+    },
+    "homepage": "https://github.com/Felipemv/inatel-trabalho-ec021#readme",
+    "dependencies": {
+        "restify": "^8.4.0",
+        "restify-router": "^0.5.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.4"
+    }
+}
