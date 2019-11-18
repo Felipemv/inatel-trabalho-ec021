@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 3000
 var server = restify.createServer()
 server.use(restify.plugins.bodyParser())
 
+server.use(restify.plugins.bodyParser())
+
 authRoutes.applyRoutes(server)
 
 server.listen(PORT, () => {
