@@ -81,6 +81,42 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Lista todos memes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/meme/",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"meme",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista 1 meme ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER}}/meme/5dd0455c80cddc8d7116db59",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"meme",
+						"5dd0455c80cddc8d7116db59"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
