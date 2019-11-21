@@ -83,10 +83,87 @@
 			"response": []
 		},
 		{
+			"name": "Insere Meme",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "985a4336-9204-4965-ae65-fb800bbf9f76",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"Meme_id\", jsonData._id);",
+							"",
+							"pm.test(\"Meme criado com sucesso.\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"titulo\": \"Doge\",\n\t\"descricao\": \"Part of a series on Interior Monologue Captioning\",\n\t\"ano\": 2013\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/meme/",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"meme",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Lista todos memes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8417025-8515-4d7c-9855-270f278b6b36",
+						"exec": [
+							"pm.test(\"Listagem feita com sucesso\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{SERVER}}/meme/",
 					"host": [
@@ -102,17 +179,143 @@
 		},
 		{
 			"name": "Lista 1 meme ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "499c9614-6e1e-46aa-a97c-b52da7d98afa",
+						"exec": [
+							"pm.test(\"Meme encontrado com sucesso\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "{{SERVER}}/meme/5dd0455c80cddc8d7116db59",
+					"raw": "{{SERVER}}/meme/{{Meme_id}}",
 					"host": [
 						"{{SERVER}}"
 					],
 					"path": [
 						"meme",
-						"5dd0455c80cddc8d7116db59"
+						"{{Meme_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza Meme",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "73bb6591-3696-4b01-8f37-06c2fcdfece6",
+						"exec": [
+							"pm.test(\"Meme atualizado com sucesso\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"titulo\": \"Forever Alone\",\n\t\"descricao\": \"Part of a series on Rage Comics\",\n\t\"ano\": 2010\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/meme/{{Meme_id}}",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"meme",
+						"{{Meme_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Meme",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5441f167-0002-4d42-8fd5-4ce0e26f512f",
+						"exec": [
+							"pm.test(\"Meme excluído\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"{{Meme_id}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER}}/meme/",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"meme",
+						""
 					]
 				}
 			},

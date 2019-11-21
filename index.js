@@ -16,7 +16,7 @@ server.use(restify.plugins.bodyParser())
 server.use(restify.plugins.queryParser());
 
 authRoutes.applyRoutes(server)
-memeRoutes.applyRoutes(server)
+memeRoutes.applyRoutes(server, '/meme')
 
 mongoose.connect(DB.DB_URL, DB.DB_SETTINGS, (err) => {
     if(!err) {
