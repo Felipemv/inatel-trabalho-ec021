@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "eb299a95-e527-4d99-b4b5-734bdb919f32",
+		"_postman_id": "385f8558-6137-4b1a-9c6d-b4881d6ee744",
 		"name": "Trabalho_ec021",
 		"description": "Collection para testes do trabalho de EC201",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -38,12 +38,52 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"{{Rafael_username}}\",\n\t\"password\": \"{{Rafael_password}}\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
+					"raw": "{\n\t\"username\": \"{{Rafael_username}}\",\n\t\"password\": \"{{Rafael_password}}\"\n}"
+				},
+				"url": {
+					"raw": "{{SERVER}}/auth/login",
+					"host": [
+						"{{SERVER}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Felipe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bdb001ca-0fc2-4ad6-ae65-4b7fed896d3b",
+						"exec": [
+							"var data = pm.response.json();",
+							"pm.environment.set(\"token\", data.token);",
+							"",
+							"pm.test(\"Login realizado com sucesso.\", () => {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"})"
+						],
+						"type": "text/javascript"
 					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"{{Felipe_username}}\",\n\t\"password\": \"{{Felipe_password}}\"\n}"
 				},
 				"url": {
 					"raw": "{{SERVER}}/auth/login",
@@ -60,6 +100,18 @@
 		},
 		{
 			"name": "Validate Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d2f94ef-779e-4cb6-bba7-92052a45cefc",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -119,12 +171,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"titulo\": \"Doge\",\n\t\"descricao\": \"Part of a series on Interior Monologue Captioning\",\n\t\"ano\": 2013\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n\t\"titulo\": \"Doge\",\n\t\"descricao\": \"Part of a series on Interior Monologue Captioning\",\n\t\"ano\": 2013\n}"
 				},
 				"url": {
 					"raw": "{{SERVER}}/meme/",
@@ -248,12 +295,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"titulo\": \"Forever Alone\",\n\t\"descricao\": \"Part of a series on Rage Comics\",\n\t\"ano\": 2010\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n\t\"titulo\": \"Forever Alone\",\n\t\"descricao\": \"Part of a series on Rage Comics\",\n\t\"ano\": 2010\n}"
 				},
 				"url": {
 					"raw": "{{SERVER}}/meme/{{Meme_id}}",
@@ -301,12 +343,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"id\": \"{{Meme_id}}\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"raw": "{\n\t\"id\": \"{{Meme_id}}\"\n}"
 				},
 				"url": {
 					"raw": "{{SERVER}}/meme/",
@@ -321,6 +358,5 @@
 			},
 			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
